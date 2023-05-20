@@ -1,0 +1,61 @@
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Navbar.css';
+
+function Navbar(props) {
+  const [isMenuClicked, setMenuClicked] = useState(false);
+
+  const handleSubMenuClick = () => {
+    
+    setMenuClicked(prevState => !prevState);
+  };
+
+  return (
+    <div>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+      <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet" />
+      <div id="gradBgn">
+        <div className="position-relative">
+          <div className="d-flex justify-content-between p-3 align-items-center position-fixed w-100">
+            <div>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5Zjl0d_hriVQiXpbLcMCdCGvwbSSQX2AX0nBmEYouuclMbdYMGnDBEJ235RMj5uYVr_g&usqp=CAU" alt="Company Logo" height="48" />
+            </div>
+            <div>
+              <div className="d-flex position-relative">
+                <div className="d-none d-sm-block"><a href="#" className="custom-link">About</a></div>
+                <div className="d-none d-sm-block">
+                  <a href="#" className="custom-link">FAQ <i className="ms-1 gg-chevron-down"></i></a>
+                </div>
+                <div id="subMenu" className={isMenuClicked ? 'menuClicked' : ''} onClick={handleSubMenuClick}>
+                  <span className="hamLine"></span>
+                  <span className="hamLine"></span>
+                  <span className="hamLine"></span>
+                </div>
+                <div id="fullPageMenu" className={isMenuClicked ? 'slideRight' : 'visually-hidden'}>
+                  <div className="anton d-flex align-items-center position-fixed vh-100 w-100 start-0 top-0 blurOverlay">
+                    <div className="container">
+                      <div className="display-1"><a href="#" className="custom-link">About</a></div>
+                      <div className="display-1"><a href="#" className="custom-link">Services</a></div>
+                      <div className="display-1"><a href="#" className="custom-link">Contact</a></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 start-0 top-0 position-fixed vh-100 align-items-center d-none d-md-flex">
+                  <div className="openSans">
+                    {/* <div className="selected sideLink ms-3 my-3"><span className="avatar">H</span> Home</div>
+                    <div className="sideLink ms-3 my-3"><span className="avatar">G</span> Utilities</div>
+                    <div className="sideLink ms-3 my-3"><span className="avatar">C</span> Blog</div>
+                    <div className="sideLink ms-3 my-3"><span className="avatar">C</span> Contact</div> */}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Navbar;
